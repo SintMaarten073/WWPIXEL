@@ -82,6 +82,10 @@ hspeed = -15
             <string>if place_meeting(x,y,obj_solid){
 instance_destroy()
 }
+
+if place_meeting(x,y,obj_enemy){
+instance_destroy()
+}
 </string>
           </argument>
         </arguments>

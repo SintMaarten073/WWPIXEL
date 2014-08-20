@@ -9,18 +9,51 @@
     <sound>sound\snd_reload</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_player_idle</sprite>
-    <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_ally_attacking</sprite>
-    <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\spr_ladder</sprite>
-    <sprite>sprites\spr_catwalk</sprite>
-    <sprite>sprites\spr_bullet</sprite>
-    <sprite>sprites\spr_halftrack</sprite>
-    <sprite>sprites\sprite9</sprite>
-    <sprite>sprites\spr_POW_barrack_closed</sprite>
-    <sprite>sprites\spr_POW_roof</sprite>
-    <sprite>sprites\spr_tree_01</sprite>
+    <sprites name="grp basic">
+      <sprites name="grp player">
+        <sprite>sprites\spr_player_idle</sprite>
+        <sprite>sprites\spr_player</sprite>
+        <sprite>sprites\spr_ally_attacking</sprite>
+      </sprites>
+      <sprites name="grp interaction">
+        <sprite>sprites\spr_bullet</sprite>
+        <sprite>sprites\spr_ladder</sprite>
+      </sprites>
+      <sprites name="grp solid">
+        <sprite>sprites\spr_solid</sprite>
+        <sprite>sprites\spr_catwalk</sprite>
+      </sprites>
+      <sprites name="grp vehicles">
+        <sprite>sprites\spr_halftrack</sprite>
+        <sprite>sprites\spr_opel_blitz</sprite>
+        <sprite>sprites\spr_opel_blitz_w_top</sprite>
+      </sprites>
+      <sprites name="grp nature">
+        <sprite>sprites\spr_tree_01</sprite>
+      </sprites>
+      <sprites name="grp structures">
+        <sprites name="grp POW camp">
+          <sprite>sprites\spr_POW_barrack_closed</sprite>
+          <sprite>sprites\spr_POW_roof</sprite>
+        </sprites>
+        <sprite>sprites\spr_platform</sprite>
+        <sprites name="grp bridge">
+          <sprite>sprites\spr_bridge01</sprite>
+          <sprite>sprites\spr_bridge02</sprite>
+          <sprite>sprites\spr_bridge03</sprite>
+          <sprite>sprites\spr_bridge04</sprite>
+          <sprites name="grp water">
+            <sprite>sprites\spr_water_bottom</sprite>
+            <sprite>sprites\spr_water_top</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="grp fences">
+          <sprite>sprites\spr_fence_01</sprite>
+          <sprite>sprites\spr_fence_02</sprite>
+        </sprites>
+      </sprites>
+    </sprites>
+    <sprite>sprites\spr_health</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -44,28 +77,47 @@
       </objects>
       <objects name="grp vehicles">
         <object>objects\obj_halftrack</object>
+        <object>objects\object16</object>
+        <object>objects\object17</object>
       </objects>
       <objects name="grp nature">
         <object>objects\obj_tree</object>
       </objects>
-    </objects>
-    <objects name="grp missions">
-      <objects name="grp mission 01">
-        <object>objects\obj_axis_general</object>
-        <object>objects\obj_ally_attacking</object>
-        <object>objects\obj_bullet_ally</object>
-        <object>objects\object11</object>
-        <object>objects\obj_POW_barrack_open</object>
-        <object>objects\obj_POW_barrack_roof</object>
+      <objects name="grp structures">
+        <objects name="grp POW camp">
+          <object>objects\obj_POW_barrack</object>
+          <object>objects\obj_POW_barrack_roof</object>
+        </objects>
+        <object>objects\obj_platform</object>
+        <objects name="grp bridge">
+          <object>objects\obj_bridge01</object>
+          <object>objects\obj_bridge02</object>
+          <object>objects\obj_bridge03</object>
+          <object>objects\obj_bridge04</object>
+          <objects name="grp water">
+            <object>objects\obj_water_bottom</object>
+            <object>objects\obj_water_top</object>
+          </objects>
+        </objects>
+        <objects name="grp fence">
+          <object>objects\obj_fence_01</object>
+          <object>objects\obj_fence_02</object>
+        </objects>
+      </objects>
+      <objects name="grp enemy">
+        <object>objects\obj_enemy</object>
+        <object>objects\obj_enemy_bullet</object>
       </objects>
     </objects>
     <object>objects\obj_solid</object>
+    <object>objects\obj_hud</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
+    <room>rooms\Mission01</room>
+    <room>rooms\Menu</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41870.566961956</constant>
+    <constant name="GM_build_date">41871.5422848958</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

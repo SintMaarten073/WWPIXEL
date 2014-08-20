@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -33,6 +33,10 @@ vspd = 0
 cspd = -2
 
 global.MP40ammo = 32
+
+global.hp = 100
+
+global.joystick = false
 </string>
           </argument>
         </arguments>
@@ -67,11 +71,27 @@ if hspd = 0{
 sprite_index = spr_player_idle
 }
 
+if global.joystick = false{
+
 var rkey = keyboard_check(vk_right)
 var lkey = keyboard_check(vk_left)
 var jkey = keyboard_check(vk_up)
 var ckey = keyboard_check(vk_up)
 var dckey = keyboard_check(vk_down)
+var skey = keyboard_check(vk_space)
+var rlkey = keyboard_check(ord('R'))
+}
+
+if global.joystick = true{
+
+var rkey = gamepad_axis_value (0, gp_axislh)
+var lkey = -gamepad_axis_value (0, gp_axislv)
+var jkey = joystick_buttons(gp_face1)
+var ckey = joystick_buttons(vk_up)
+var dckey = joystick_buttons(vk_down)
+var skey = joystick_buttons(gp_shoulderr)
+var rlkey = joystick_buttons(gp_face2)
+}
 //
 if place_meeting(x,y+1, obj_solid) {
          vspd = 0
@@ -155,38 +175,57 @@ y += vspd
   instance_create(x,y,obj_bullet)
 }
 
-if keyboard_check_pressed(ord('R')){
+if (rlkey){
 global.MP40ammo = 32
 sound_play(snd_reload)
 }
 
-if keyboard_check(vk_space) &amp;&amp; global.MP40ammo = 0{
+if (skey) &amp;&amp; global.MP40ammo = 0{
 sound_play(snd_cockgun)
 }
+
+
+//
+
+
+if global.hp &gt; 100{
+global.hp = 100
+}
+
+//
+
+if global.hp &lt; 0 {
+room_restart()
+}
+
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="4" ename="obj_enemy_bullet">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
-        <relative>0</relative>
+        <relative>-1</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(view_wview-15,view_yview-15,'ammo: global.MP40ammo')
-</string>
+            <string>global.hp</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>-1</string>
           </argument>
         </arguments>
       </action>
