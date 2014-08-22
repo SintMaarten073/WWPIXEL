@@ -52,6 +52,9 @@ image_index = 5
 if place_meeting(x-1,y,obj_grass)  &amp;&amp; place_meeting(x+1,y+1,obj_grass)=false {
 image_index = 4
 }
+
+ if !place_meeting(x,y-1,obj_grass) &amp;&amp; ceil(random(1))=1 { instance_create(x,y-1,obj_extragrass) }
+
 </string>
           </argument>
         </arguments>

@@ -37,6 +37,8 @@ global.MP40ammo = 32
 global.hp = 100
 
 global.joystick = false
+
+global.hidden = false
 </string>
           </argument>
         </arguments>
@@ -198,7 +200,14 @@ if global.hp &lt; 0 {
 room_restart()
 }
 
+//
 
+if place_meeting(x,y,obj_globalhidden_activate){
+global.hidden = true
+}
+else{
+global.hidden = false
+}
 </string>
           </argument>
         </arguments>

@@ -30,6 +30,7 @@
       </sprites>
       <sprites name="grp nature">
         <sprite>sprites\spr_tree_01</sprite>
+        <sprite>sprites\spr_extragrass</sprite>
       </sprites>
       <sprites name="grp structures">
         <sprites name="grp POW camp">
@@ -51,6 +52,12 @@
           <sprite>sprites\spr_fence_01</sprite>
           <sprite>sprites\spr_fence_02</sprite>
         </sprites>
+        <sprites name="grp buildings">
+          <sprite>sprites\sprite25</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="grp stealth">
+        <sprite>sprites\spr_tallgrass</sprite>
       </sprites>
     </sprites>
     <sprite>sprites\spr_health</sprite>
@@ -82,6 +89,7 @@
       </objects>
       <objects name="grp nature">
         <object>objects\obj_tree</object>
+        <object>objects\obj_extragrass</object>
       </objects>
       <objects name="grp structures">
         <objects name="grp POW camp">
@@ -103,22 +111,29 @@
           <object>objects\obj_fence_01</object>
           <object>objects\obj_fence_02</object>
         </objects>
+        <objects name="grp buildings">
+          <object>objects\obj_farm_house</object>
+        </objects>
       </objects>
       <objects name="grp enemy">
         <object>objects\obj_enemy</object>
         <object>objects\obj_enemy_bullet</object>
       </objects>
+      <objects name="grp stealth">
+        <object>objects\obj_tallgrass</object>
+      </objects>
     </objects>
     <object>objects\obj_solid</object>
     <object>objects\obj_hud</object>
+    <object>objects\obj_globalhidden_activate</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Mission01</room>
     <room>rooms\Menu</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41871.5422848958</constant>
-    <constant name="GM_version">'1.0.0.0'</constant>
+    <constant name="GM_build_date">41873.4823967014</constant>
+    <constant name="GM_version">'100'</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
