@@ -7,6 +7,7 @@
   <sounds name="sound">
     <sound>sound\snd_cockgun</sound>
     <sound>sound\snd_reload</sound>
+    <sound>sound\snd_explode</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="grp basic">
@@ -61,6 +62,12 @@
       </sprites>
     </sprites>
     <sprite>sprites\spr_health</sprite>
+    <sprite>sprites\spr_medikit</sprite>
+    <sprite>sprites\sprgrenade</sprite>
+    <sprite>sprites\spr_explotion</sprite>
+    <sprite>sprites\spr_blood</sprite>
+    <sprite>sprites\spr_landmine</sprite>
+    <sprite>sprites\spr_landmine_explotion</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -81,6 +88,7 @@
       <objects name="grp solid">
         <object>objects\obj_catwalk</object>
         <object>objects\obj_grass</object>
+        <object>objects\obj_solid</object>
       </objects>
       <objects name="grp vehicles">
         <object>objects\obj_halftrack</object>
@@ -123,17 +131,24 @@
         <object>objects\obj_tallgrass</object>
       </objects>
     </objects>
-    <object>objects\obj_solid</object>
     <object>objects\obj_hud</object>
     <object>objects\obj_globalhidden_activate</object>
+    <object>objects\obj_enemy_spawn</object>
+    <object>objects\obj_medikit</object>
+    <object>objects\obj_medikit_spawner</object>
+    <object>objects\obj_grenade</object>
+    <object>objects\obj_explotion</object>
+    <object>objects\obj_blood</object>
+    <object>objects\obj_landmine</object>
+    <object>objects\obj_landmine_explotion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Mission01</room>
     <room>rooms\Menu</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41873.4823967014</constant>
-    <constant name="GM_version">'100'</constant>
+    <constant name="GM_build_date">41875.4485871991</constant>
+    <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

@@ -34,11 +34,111 @@ cspd = -2
 
 global.MP40ammo = 32
 
-global.hp = 100
+global.hp = 150
 
 global.joystick = false
 
-global.hidden = false
+grenade = true
+
+mine = true
+
+landmines = 4
+shoot = true
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shoot = true
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if landmines &gt; 0
+mine = true
+landmines -= 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.MP40ammo = 32
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>grenade = true
 </string>
           </argument>
         </arguments>
@@ -81,7 +181,7 @@ var jkey = keyboard_check(vk_up)
 var ckey = keyboard_check(vk_up)
 var dckey = keyboard_check(vk_down)
 var skey = keyboard_check(vk_space)
-var rlkey = keyboard_check(ord('R'))
+var rlkey = keyboard_check(ord('Z'))
 }
 
 if global.joystick = true{
@@ -97,22 +197,22 @@ var rlkey = joystick_buttons(gp_face2)
 //
 if place_meeting(x,y+1, obj_solid) {
          vspd = 0
-                   //
+         
                    if (jkey) {
                         vspd=-jspd
                    }
-}
-else {
-//
+} else {
+
 if (vspd&lt;10)
      vspd+=grav
 }
 
 //
-if (rkey) {hspd = spd
+if (rkey) {
+hspd = spd
 image_xscale=1
 
-if (place_meeting(x-1, y, obj_solid) &amp;&amp; !place_meeting(x,y+1, obj_solid) &amp;&amp; !lkey)
+if (place_meeting(x-3, y, obj_solid) &amp;&amp; !place_meeting(x,y+1, obj_solid) &amp;&amp; !lkey)
                  vspd=-jspd
 }            
 
@@ -120,7 +220,7 @@ if (place_meeting(x-1, y, obj_solid) &amp;&amp; !place_meeting(x,y+1, obj_solid)
 if (lkey) {hspd = -spd
 image_xscale=-1
 
-if (place_meeting(x+1, y, obj_solid) &amp;&amp; !place_meeting(x,y+1, obj_solid) &amp;&amp; !rkey)
+if (place_meeting(x+3, y, obj_solid) &amp;&amp; !place_meeting(x,y+1, obj_solid) &amp;&amp; !rkey)
                  vspd=-jspd
 }
 
@@ -173,12 +273,14 @@ y += vspd
 
 //
 
- if keyboard_check(vk_space) &amp;&amp; global.MP40ammo &gt; 0 {
-  instance_create(x,y,obj_bullet)
+ if keyboard_check(vk_space) &amp;&amp; global.MP40ammo &gt; 0 &amp;&amp; shoot = true {
+  instance_create(x,y,obj_bullet) 
+  alarm[3] = 10
+  shoot = false
 }
 
-if (rlkey){
-global.MP40ammo = 32
+if (rlkey) {
+alarm[1] = 60;
 sound_play(snd_reload)
 }
 
@@ -208,6 +310,33 @@ global.hidden = true
 else{
 global.hidden = false
 }
+if global.hp &gt;=150 {
+global.hp = 150
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_medikit">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.hp += 150;
+with(other)instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -235,6 +364,126 @@ global.hidden = false
           <argument>
             <kind>0</kind>
             <string>-1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>201</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_create_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>10</kind>
+            <object>obj_blood</object>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>y</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if grenade = true {
+instance_create(x,y,obj_grenade);
+grenade = false
+alarm[0] = 120
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="67">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if mine = true &amp;&amp; landmines &gt;0{
+instance_create(x,y+12,obj_landmine)
+mine = false
+alarm[2] = 90;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>500</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring>draw_self();</codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_text(view_xview+32,view_yview+64,'Health'+string(global.hp))
+draw_text(view_xview+290-32,view_yview+64,'Ammo Clip'+string(global.MP40ammo))
+</string>
           </argument>
         </arguments>
       </action>

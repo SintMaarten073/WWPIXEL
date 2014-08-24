@@ -25,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_player.image_xscale = 1{
-hspeed = 15
+            <string>//action_set_relative(15)
+if obj_player.image_xscale = 1{
+hspeed = 5
 }
 
 
 if obj_player.image_xscale = -1{
-hspeed = -15
+hspeed = -5
 }
 </string>
           </argument>
