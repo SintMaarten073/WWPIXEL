@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>hp = 25
-global.EMP40ammo = 32
+EMP40ammo = 32
 shoot = true
 </string>
           </argument>
@@ -50,7 +50,7 @@ shoot = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.EMP40ammo = 32
+            <string>EMP40ammo = 32
 </string>
           </argument>
         </arguments>
@@ -130,12 +130,13 @@ if place_meeting(x+1,y,obj_solid) {
 } else {
     vspeed = 0
 }
-if distance_to_object(obj_player) &lt;= 100 &amp;&amp; shoot = true &amp;&amp; global.EMP40ammo &gt;0{
+if distance_to_object(obj_player) &lt;= 100 &amp;&amp; shoot = true &amp;&amp; EMP40ammo &gt;0{
     instance_create(x,y,obj_enemy_bullet)
     shoot = false
     alarm[0] = 10
+    EMP40ammo -= 1;
 }
-if global.EMP40ammo &lt;= 0 {
+if EMP40ammo &lt;= 0 {
     alarm[1] = 60;
 }
 
@@ -189,6 +190,34 @@ if global.EMP40ammo &lt;= 0 {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if id &lt; other.id {
+    x += 13
+} else {
+    x -= 13
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_bullet">
       <action>
         <libid>1</libid>
@@ -206,7 +235,7 @@ if global.EMP40ammo &lt;= 0 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp -= 2
+            <string>hp -= 10
 </string>
           </argument>
         </arguments>
