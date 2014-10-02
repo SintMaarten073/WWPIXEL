@@ -8,6 +8,7 @@
     <sound>sound\snd_cockgun</sound>
     <sound>sound\snd_reload</sound>
     <sound>sound\snd_explode</sound>
+    <sound>sound\snd_gunshot</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="grp basic">
@@ -73,6 +74,10 @@
     <sprite>sprites\spr_blood</sprite>
     <sprite>sprites\spr_landmine</sprite>
     <sprite>sprites\spr_landmine_explotion</sprite>
+    <sprite>sprites\Controlls</sprite>
+    <sprite>sprites\spr_Cutscene</sprite>
+    <sprite>sprites\spr_arrow_left</sprite>
+    <sprite>sprites\spr_tallgrasshint</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -95,9 +100,11 @@
     <objects name="grp basic">
       <objects name="grp player">
         <object>objects\obj_player</object>
+        <object>objects\obj_player_russian</object>
       </objects>
       <objects name="grp interaction">
         <object>objects\obj_bullet</object>
+        <object>objects\obj_bullet_russian</object>
         <object>objects\obj_ladder</object>
       </objects>
       <objects name="grp solid">
@@ -140,7 +147,9 @@
       </objects>
       <objects name="grp enemy">
         <object>objects\obj_enemy</object>
+        <object>objects\obj_enemy_for_russian_levels</object>
         <object>objects\obj_enemy_bullet</object>
+        <object>objects\obj_bullet_enemy_russian</object>
       </objects>
       <objects name="grp stealth">
         <object>objects\obj_tallgrass</object>
@@ -155,13 +164,24 @@
       <object>objects\obj_cursor</object>
       <object>objects\obj_menu_buttons</object>
     </objects>
+    <objects name="grp writing">
+      <object>objects\Controlls_instruction</object>
+      <object>objects\obj_cutscene</object>
+      <object>objects\obj_arrow_left</object>
+    </objects>
+    <object>objects\obj_MissionComplete</object>
+    <object>objects\obj_russian_next_level</object>
+    <object>objects\obj_tallgrasshint</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Menu</room>
+    <room>rooms\rm_cutscene01</room>
     <room>rooms\Mission01</room>
+    <room>rooms\rm_cutscene02</room>
+    <room>rooms\Mission02_russian</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41876.7633726968</constant>
+    <constant name="GM_build_date">41901.6019256713</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
